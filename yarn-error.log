@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Arkadiy\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js test
+  C:\Program Files\nodejs\node.exe C:\Users\Arkadiy\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js run build:prod
 
 PATH: 
   C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\Arkadiy\AppData\Roaming\npm;C:\Users\Arkadiy\AppData\Local\atom\bin;C:\Program Files\Microsoft VS Code\bin
@@ -22,7 +22,8 @@ npm manifest:
     "license": "MIT",
     "scripts": {
       "serve": "live-server public/",
-      "build": "webpack",
+      "build:dev": "webpack",
+      "build:prod": "webpack -p --env production",
       "dev-server": "webpack-dev-server",
       "test": "jest --config=jest.config.json"
     },
@@ -40,6 +41,7 @@ npm manifest:
       "enzyme-adapter-react-15": "^1.0.5",
       "enzyme-adapter-react-16": "^1.1.1",
       "enzyme-to-json": "^3.3.3",
+      "extract-text-webpack-plugin": "^3.0.2",
       "jest": "^22.4.3",
       "live-server": "^1.2.0",
       "moment": "^2.22.1",
@@ -406,7 +408,7 @@ Lockfile:
     dependencies:
       lodash "^4.14.0"
   
-  async@^2.1.4:
+  async@^2.1.4, async@^2.4.1:
     version "2.6.0"
     resolved "https://registry.yarnpkg.com/async/-/async-2.6.0.tgz#61a29abb6fcc026fea77e56d1c6ec53a795951f4"
     dependencies:
@@ -2660,6 +2662,15 @@ Lockfile:
       regex-not "^1.0.0"
       snapdragon "^0.8.1"
       to-regex "^3.0.1"
+  
+  extract-text-webpack-plugin@^3.0.2:
+    version "3.0.2"
+    resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"
+    dependencies:
+      async "^2.4.1"
+      loader-utils "^1.1.0"
+      schema-utils "^0.3.0"
+      webpack-sources "^1.0.1"
   
   extsprintf@1.0.2:
     version "1.0.2"
@@ -7200,7 +7211,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: C:\Windows\system32\cmd.exe
-  Arguments: /d /s /c jest --config=jest.config.json
+  Arguments: /d /s /c webpack -p --env production
   Directory: C:\expensify-app
   Output:
   
